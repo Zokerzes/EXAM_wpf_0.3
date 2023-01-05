@@ -54,6 +54,7 @@ namespace EXAM_wpf_0._3
 
         private void _todoDataList_ListChanged(object sender, ListChangedEventArgs e)
         {
+            
 
             if (e.ListChangedType == ListChangedType.ItemAdded ||
                 e.ListChangedType == ListChangedType.ItemDeleted ||
@@ -70,9 +71,11 @@ namespace EXAM_wpf_0._3
                     Close();                            // после ошибки закрыть главное окно
                 }
             }
+            
+
         }
 
-       
+
     }
 }
 

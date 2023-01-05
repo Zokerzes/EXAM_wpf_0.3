@@ -59,7 +59,13 @@ namespace EXAM_wpf_0._3.Model
         public bool IsStarted
         {
             get { return _isStarted; }
-            set { _isStarted = value; }
+            set
+            {
+                if (_isStarted == value) return;
+
+                _isStarted = value;
+                OnPropretyChanget("IsStarted");
+            }
         }
 
         private DateTime _stopTime;

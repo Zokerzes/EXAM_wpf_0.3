@@ -29,6 +29,7 @@
                                         Binding="{Binding Path=IsDone, 
                                         UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridCheckBoxColumn Header="TimerStarted"
+                                        x:Name="TimerSrarted"
                                         Binding="{Binding  Path=IsStarted, 
                                         UpdateSourceTrigger=PropertyChanged}"
                                         Width="110"/>
