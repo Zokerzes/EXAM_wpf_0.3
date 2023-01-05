@@ -1,4 +1,5 @@
 ﻿using EXAM_wpf_0._3.Model;
+using EXAM_wpf_0._3.Servises;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +23,9 @@ namespace EXAM_wpf_0._3
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly string PATH = $"{Environment.CurrentDirectory}\\todoDataList.json";
         private BindingList<TodoModel> _todoDataList;
-
+        private FileIOService _fileIOService;
 
         public MainWindow()
         {
@@ -33,11 +35,19 @@ namespace EXAM_wpf_0._3
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _todoDataList = new BindingList<TodoModel>()
+            _fileIOService = new FileIOService(PATH);
+
+            try
             {
-                new TodoModel() { Text = "test"},
-                new TodoModel() { Text = "test1"},
-            };
+                _todoDataList = _fileIOService.LoadData();  //грузим данные из файла
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Close();                            // после ошибки закрыть главное окно
+            }
+
             dgTodoList.ItemsSource = _todoDataList;     //привязка данных к datagrid
             _todoDataList.ListChanged += _todoDataList_ListChanged;
         }
@@ -48,7 +58,16 @@ namespace EXAM_wpf_0._3
                 e.ListChangedType == ListChangedType.ItemDeleted ||
                 e.ListChangedType == ListChangedType.ItemChanged)
             {
-                
+                try
+                {
+                    _fileIOService.SavedData(sender);  //сохраняем данные в файл
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    Close();                            // после ошибки закрыть главное окно
+                }
             }
         }
     }
