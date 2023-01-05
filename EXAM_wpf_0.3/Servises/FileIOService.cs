@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using static System.Net.WebRequestMethods;
 
 namespace EXAM_wpf_0._3.Servises
 {

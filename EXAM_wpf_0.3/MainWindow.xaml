@@ -11,21 +11,31 @@
                   FontSize="16"
                   FontWeight="DemiBold"
                   Margin="10"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False" >
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CreationDate"
-                                    Width="180"
+                                    Width="150"
                                     IsReadOnly="True"
                                     Binding="{Binding Path=CreationData}"/>
-                <DataGridCheckBoxColumn Header="Done"
-                                        Width="80"
-                                        IsReadOnly="False"
-                                        Binding="{Binding Path=IsDone, 
-                                        UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Todo"
                                     Width="*"
                                     IsReadOnly="False"
-                                    Binding="{Binding Path=Text}"/>
+                                    Binding="{Binding Path=Text}"
+                                    />
+                <DataGridCheckBoxColumn Header="Done"
+                                        Width="50"
+                                        IsReadOnly="False"
+                                        Binding="{Binding Path=IsDone, 
+                                        UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridCheckBoxColumn Header="TimerStarted"
+                                        Binding="{Binding  Path=IsStarted, 
+                                        UpdateSourceTrigger=PropertyChanged}"
+                                        Width="110"/>
+                <DataGridTextColumn Header="TimeToEnding"
+                                    Binding="{Binding Path=AllTime}"
+                                    Width="*"
+                                    />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

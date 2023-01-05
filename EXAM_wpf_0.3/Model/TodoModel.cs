@@ -12,7 +12,7 @@ namespace EXAM_wpf_0._3.Model
     {
 
         public DateTime CreationData { get; set; } = DateTime.Now;
-
+        
         private bool _isDone;
         private string _text;
         public bool IsDone
@@ -39,6 +39,56 @@ namespace EXAM_wpf_0._3.Model
             }
         }
 
+        private DateTime _startTime;
+
+        public DateTime StartTime
+        {
+            get { return _startTime; }
+            set 
+            {
+                //if (_startTime==null)
+                //{
+                //    _startTime = CreationData;
+                //}
+                _startTime = value; 
+            }
+        }
+
+        private bool _isStarted;
+
+        public bool IsStarted
+        {
+            get { return _isStarted; }
+            set { _isStarted = value; }
+        }
+
+        private DateTime _stopTime;
+
+        public DateTime StopTime
+        {
+            get { return _stopTime; }
+            set { _stopTime = value; }
+        }
+
+        private string _allTime;
+
+        public string AllTime
+        {
+            get { return _allTime; }
+            set
+            {
+                //if (StopTime == null)
+                //{
+                //    _allTime = DateTime.Now - StartTime;
+                //}
+                _allTime = (StopTime - StartTime).ToString();
+            }
+        }
+
+
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropretyChanget(string propertyName="")
@@ -46,6 +96,7 @@ namespace EXAM_wpf_0._3.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));  // подписка на событие и проверка на null
            
         }
+
 
     }
 }
